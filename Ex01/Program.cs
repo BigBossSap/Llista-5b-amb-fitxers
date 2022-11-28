@@ -11,34 +11,34 @@ namespace Ex01
   el primer es repeteix.   */
 
 
-            int num, comparador = int.MinValue;
+            int num, cont =0, primerNum;
             bool semafor = true;
             int aux=0;
 
             StreamReader fitxerR = new StreamReader(@"D:\repos\llista 5b fitxers\Llista 5b amb fitxers\Ex01\llista.txt");
             StreamWriter fitxerW = new StreamWriter(@"D:\repos\llista 5b fitxers\Llista 5b amb fitxers\Ex01\resultat.txt");
+            primerNum = Convert.ToInt32(fitxerR.ReadLine());
             num = Convert.ToInt32(fitxerR.ReadLine());
-
+            
 
             while (!(fitxerR.EndOfStream))
             {
 
 
-
-                if (comparador == num)
+                num = Convert.ToInt32(fitxerR.ReadLine());
+                if (primerNum == num)
+                {
 
                     semafor = false;
-
-
-                comparador = num;
-
-                num = Convert.ToInt32(fitxerR.ReadLine());
+                    cont++;
+                }
+                                
             }
 
             if (semafor)
                 fitxerW.WriteLine("No");
             else
-                fitxerW.WriteLine("Si");
+                fitxerW.WriteLine($"Si, {primerNum} es repeteix {cont} veguades");
 
             fitxerR.Close();
             fitxerW.Close();
